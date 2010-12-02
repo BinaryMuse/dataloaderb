@@ -28,8 +28,6 @@ This is just a loose spec of what the code might could should look like; things 
     ['firstUpsert.yml', 'secondUpsert.yml', 'thirdUpsert.yml'].each do |process|
       runner.run "processes/#{process}"
     end
-    
-    # redirecting_process_runner.rb
 
 `processes/firstUpsert.yml`:
 
