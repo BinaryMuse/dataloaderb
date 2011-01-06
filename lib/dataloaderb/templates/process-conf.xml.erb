@@ -1,0 +1,18 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+<% @processes.each do |proc| %>
+  <bean id="<%= proc.id %>"
+        class="com.salesforce.dataloader.process.ProcessRunner"
+        singleton="false">
+    <description><%= proc.description %></description>
+    <property name="name" value="<%= proc.id %>"/>
+    <property name="configOverrideMap">
+      <map>
+      <% proc.entries.each do |key, value| %>
+        <entry key="<%= key %>" value="<%= value %>"/>
+      <% end %>
+      </map>
+    </property>
+  </bean>
+<% end %>
+</beans>

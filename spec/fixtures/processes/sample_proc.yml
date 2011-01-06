@@ -1,0 +1,26 @@
+id: 'firstUpsert'
+description: 'Upsert of some data somewhere'
+properties:
+  # endpoint config
+  sfdc.endpoint:             'https://www.salesforce.com'
+  sfdc.username:             'xxxxxxxxxx@xxxxxxxxxx.xxx'
+  sfdc.password:             'xxxxxxxxxxxxxxxxxxxxxxxxx'
+  process.encryptionKeyFile: 'C:/salesforce/dataloader/enc_pass.key'
+
+  # operation config
+  sfdc.timeoutSecs:     '600'
+  sfdc.loadBatchSize:   '100'
+  sfdc.externalIdField: 'Custom_Field__c'
+  sfdc.entity:          'Account'
+  process.operation:    'upsert'
+  process.mappingFile:  '//shared/salesforce/upserts/first.Mapping.sdl'
+  dataAccess.name:      '//shared/salesforce/upserts/first.csv'
+  dataAccess.type:      'csvRead'
+
+  # logging config
+  sfdc.debugMessages:            'true'
+  process.statusOutputDirectory: '//shared/salesforce/upserts/first/lastrun'
+
+  # misc config
+  process.enableLastRunOutput:   'false'
+  process.initialLastRunDate:    '2010-01-01T00:00:00.000-0800'
