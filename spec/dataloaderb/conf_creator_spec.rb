@@ -8,13 +8,13 @@ describe Dataloaderb::ConfCreator do
       FIXTURE_PROCESSES[:full_process_one]
     ]
     # ConfCreator#new expects multiple arguments, not an array, thus we splat
-    @creator = Dataloaderb::ConfCreator.new(*@yamls)
+    @creator = Dataloaderb::ConfCreator.new(@yamls)
   end
 
   context "#build_process_definitions" do
     it "should build a process definition for each yaml file" do
       @creator.processes.count.should == 1
-      @creator = Dataloaderb::ConfCreator.new(FIXTURE_PROCESSES[:full_process_one], FIXTURE_PROCESSES[:full_process_two])
+      @creator = Dataloaderb::ConfCreator.new([FIXTURE_PROCESSES[:full_process_one], FIXTURE_PROCESSES[:full_process_two]])
       @creator.processes.count.should == 2
     end
   end

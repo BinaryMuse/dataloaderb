@@ -10,7 +10,7 @@ module Dataloaderb
     attr_reader :processes
 
     # Create a new instance of a ConfCreator
-    def initialize(*yamls)
+    def initialize(yamls)
       @processes = []
       build_process_definitions(yamls)
     end
