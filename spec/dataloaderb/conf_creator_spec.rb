@@ -11,7 +11,7 @@ describe Dataloaderb::ConfCreator do
     @creator = Dataloaderb::ConfCreator.new(@yamls)
   end
 
-  context "#build_process_definitions" do
+  describe "#build_process_definitions" do
     it "should build a process definition for each yaml file" do
       @creator.processes.count.should == 1
       @creator = Dataloaderb::ConfCreator.new([FIXTURE_PROCESSES[:full_process_one], FIXTURE_PROCESSES[:full_process_two]])
@@ -25,7 +25,7 @@ describe Dataloaderb::ConfCreator do
     end
   end
 
-  context "#to_xml" do
+  describe "#to_xml" do
     it "should create XML with the correct values" do
       @creator.to_xml.include?('<entry key="sfdc.endpoint" value="https://www.salesforce.com"/>').should be_true
       @creator.to_xml.include?('<bean id="firstUpsert"').should be_true
@@ -33,7 +33,7 @@ describe Dataloaderb::ConfCreator do
     end
   end
 
-  context "#get_binding" do
+  describe "#get_binding" do
     it "should get an object of class Binding" do
       @creator.send(:get_binding).class.should == Binding
     end

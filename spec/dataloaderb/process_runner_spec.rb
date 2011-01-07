@@ -46,7 +46,7 @@ describe Dataloaderb::ProcessRunner do
     end
   end
 
-  context "#run" do
+  describe "#run" do
     it "should raise an exception if no arguments are passed" do
       lambda {
         @runner.run

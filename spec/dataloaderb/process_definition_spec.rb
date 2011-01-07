@@ -7,7 +7,7 @@ describe Dataloaderb::ProcessDefinition do
     @conf = Dataloaderb::ProcessDefinition.new(FIXTURE_PROCESSES[:full_process_one])
   end
 
-  context "#set/#get" do
+  describe "#set/#get" do
     it "should allow setting process conf variables via the XML entry key as a string" do
       @conf.set('sfdc.endpoint', 'https://test.salesforce.com')
       @conf.get('sfdc.endpoint').should == 'https://test.salesforce.com'
@@ -19,7 +19,7 @@ describe Dataloaderb::ProcessDefinition do
     end
   end
 
-  context "#load_yaml" do
+  describe "#load_yaml" do
     it "should raise an ArgumentError if the file doesn't exist" do
       lambda {
         @conf.load_yaml('fakefile.yaml')
