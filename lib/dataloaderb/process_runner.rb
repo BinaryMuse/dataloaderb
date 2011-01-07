@@ -37,6 +37,21 @@ module Dataloaderb
       `#{get_process_execute_command @bin_path, @conf_path, process_name}`
     end
 
+    # Given the path to the Apex Data Loader bin directory, the
+    # path to the folder with the process-conf.xml file, and the
+    # name of a process defined in the XML to run, return the
+    # command that the operating system needs to run to execute
+    # the process.
+    def get_process_execute_command(bin_path, conf_path, process_name)
+      "#{get_process_bat_path(bin_path)} #{conf_path} #{process_name}"
+    end
+
+    # Given the path to the Apex Data Loader bin directory, return
+    # the expanded path of the process.bat file to be executed.
+    def get_process_bat_path(bin_path)
+      File.expand_path "#{bin_path}/process.bat"
+    end
+
     protected
 
       def create_configuration(xml)
@@ -50,21 +65,6 @@ module Dataloaderb
 
       def remove_configuration
         FileUtils.remove_entry_secure(@conf_path) unless @conf_path.nil?
-      end
-
-      # Given the path to the Apex Data Loader bin directory, the
-      # path to the folder with the process-conf.xml file, and the
-      # name of a process defined in the XML to run, return the
-      # command that the operating system needs to run to execute
-      # the process.
-      def get_process_execute_command(bin_path, conf_path, process_name)
-        "#{get_process_bat_path(bin_path)} #{conf_path} #{process_name}"
-      end
-
-      # Given the path to the Apex Data Loader bin directory, return
-      # the expanded path of the process.bat file to be executed.
-      def get_process_bat_path(bin_path)
-        File.expand_path "#{bin_path}/process.bat"
       end
   end
 end
