@@ -4,8 +4,9 @@ module Dataloaderb
   class ProcessRunner
     # Create the process runner and specify the path to
     # the Apex Data Loader executable (batch) files.
-    def initialize(bin_path)
+    def initialize(bin_path, opts = {})
       @bin_path = bin_path
+      @opts     = opts
     end
 
     # Run one or more processes. Specify the processes to run by passing
@@ -15,7 +16,7 @@ module Dataloaderb
         raise ArgumentError, "You must pass at least one argument to Dataloaderb::ProcessRunner#run"
       end
 
-      creator = Dataloaderb::ConfCreator.new(yamls)
+      creator = Dataloaderb::ConfCreator.new(yamls, opts)
     end
 
     def execute_process(process_name)

@@ -10,14 +10,19 @@ module Dataloaderb
     attr_reader :processes
 
     # Create a new instance of a ConfCreator
-    def initialize(yamls)
+    def initialize(yamls, opts = {})
       @processes = []
+      @opts      = opts
       build_process_definitions(yamls)
     end
 
     def build_process_definitions(yamls)
       yamls.each do |yaml|
-        proc_def = Dataloaderb::ProcessDefinition.new(yaml)
+        if @opts[:marge].nil? || @opts[:marge].empty?
+          proc_def = Dataloaderb::ProcessDefinition.new(yaml)
+        else
+          proc_def = Dataloaderb::ProcessDefinition.new(yaml, @opts[:merge])
+        end
         @processes << proc_def
       end
     end
