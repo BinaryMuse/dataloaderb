@@ -3,7 +3,7 @@ require 'dataloaderb/process_runner'
 
 describe Dataloaderb::ProcessRunner do
   before :each do
-    @runner   = Dataloaderb::ProcessRunner.new('spec/fixtures/bin')
+    @runner = Dataloaderb::ProcessRunner.new('spec/fixtures/bin')
   end
 
   describe "#get_process_bat_path" do
@@ -25,6 +25,16 @@ describe Dataloaderb::ProcessRunner do
     it "should return the right process.bat path given an absolute path with a trailing slash" do
       path = @runner.send(:get_process_bat_path, '/sf/bin/')
       path.should == "/sf/bin/process.bat"
+    end
+  end
+
+  describe "#create_configuration" do
+    it "should create a new directory under the temporary directory" do
+      @runner.instance_variable_set(:@opts, { :tmp_dir => './tmp/' })
+      @runner.send(:create_configuration, 'fake xml data')
+      tmp_dir = @runner.instance_variable_get(:@conf_path)
+      IO.readlines("#{tmp_dir}/process-conf.xml")[0].should == "fake xml data"
+      FileUtils.remove_entry_secure(tmp_dir)
     end
   end
 

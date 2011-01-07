@@ -40,15 +40,5 @@ module Dataloaderb
       def get_binding
         binding
       end
-
-      # def write_xml(xml)
-      #   base_tmpdir = @options[:tmp_dir] || Dir.tmpdir
-      #   dir = Dir.mktmpdir(['', Dataloaderb::Support.unique_id], base_tmpdir)
-      #   begin
-      #     ##
-      #   ensure
-      #     FileUtils.remove_entry_secure dir
-      #   end
-      # end
   end
 end
