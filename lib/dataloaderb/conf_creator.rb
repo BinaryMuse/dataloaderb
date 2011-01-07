@@ -18,7 +18,7 @@ module Dataloaderb
 
     def build_process_definitions(yamls)
       yamls.each do |yaml|
-        if @opts[:marge].nil? || @opts[:marge].empty?
+        if @opts[:merge].nil? || @opts[:merge].empty?
           proc_def = Dataloaderb::ProcessDefinition.new(yaml)
         else
           proc_def = Dataloaderb::ProcessDefinition.new(yaml, @opts[:merge])
