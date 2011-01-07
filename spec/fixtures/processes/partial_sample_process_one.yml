@@ -1,0 +1,13 @@
+id: 'firstUpsert'
+description: 'First sample upsert'
+properties:
+  # operation config
+  sfdc.externalIdField: 'Custom_Field__c'
+  sfdc.entity:          'Account'
+  process.operation:    'upsert'
+  process.mappingFile:  '//shared/salesforce/upserts/first.Mapping.sdl'
+  dataAccess.name:      '//shared/salesforce/upserts/first.csv'
+  dataAccess.type:      'csvRead'
+
+  # logging config
+  process.statusOutputDirectory: '//shared/salesforce/upserts/first/lastrun'

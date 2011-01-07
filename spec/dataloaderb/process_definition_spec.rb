@@ -4,7 +4,7 @@ require 'tmpdir'
 
 describe Dataloaderb::ProcessDefinition do
   before :each do
-    @conf = Dataloaderb::ProcessDefinition.new('spec/fixtures/processes/sample_proc.yml')
+    @conf = Dataloaderb::ProcessDefinition.new(FIXTURE_PROCESSES[:full_process_one])
   end
 
   context "#set/#get" do
@@ -27,7 +27,6 @@ describe Dataloaderb::ProcessDefinition do
     end
 
     it "should set the appropriate values via set()" do
-      @conf.load_yaml('spec/fixtures/processes/sample_proc.yml')
       @conf.get('sfdc.timeoutSecs').should == '600'
       @conf.get('sfdc.debugMessages').should == 'true'
       @conf.get('process.initialLastRunDate').should == '2010-01-01T00:00:00.000-0800'

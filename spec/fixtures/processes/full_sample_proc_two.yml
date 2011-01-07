@@ -1,5 +1,5 @@
-id: 'firstUpsert'
-description: 'Upsert of some data somewhere'
+id: 'secondUpsert'
+description: 'Second sample upsert'
 properties:
   # endpoint config
   sfdc.endpoint:             'https://www.salesforce.com'
@@ -13,13 +13,13 @@ properties:
   sfdc.externalIdField: 'Custom_Field__c'
   sfdc.entity:          'Account'
   process.operation:    'upsert'
-  process.mappingFile:  '//shared/salesforce/upserts/first.Mapping.sdl'
-  dataAccess.name:      '//shared/salesforce/upserts/first.csv'
+  process.mappingFile:  '//shared/salesforce/upserts/second.Mapping.sdl'
+  dataAccess.name:      '//shared/salesforce/upserts/second.csv'
   dataAccess.type:      'csvRead'
 
   # logging config
   sfdc.debugMessages:            'true'
-  process.statusOutputDirectory: '//shared/salesforce/upserts/first/lastrun'
+  process.statusOutputDirectory: '//shared/salesforce/upserts/second/lastrun'
 
   # misc config
   process.enableLastRunOutput:   'false'

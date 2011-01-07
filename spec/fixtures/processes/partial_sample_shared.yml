@@ -1,0 +1,16 @@
+# endpoint config
+sfdc.endpoint:             'https://www.salesforce.com'
+sfdc.username:             'xxxxxxxxxx@xxxxxxxxxx.xxx'
+sfdc.password:             'xxxxxxxxxxxxxxxxxxxxxxxxx'
+process.encryptionKeyFile: 'C:/salesforce/dataloader/enc_pass.key'
+
+# operation config
+sfdc.timeoutSecs:     '600'
+sfdc.loadBatchSize:   '100'
+
+# logging config
+sfdc.debugMessages:            'true'
+
+# misc config
+process.enableLastRunOutput:   'false'
+process.initialLastRunDate:    '2010-01-01T00:00:00.000-0800'

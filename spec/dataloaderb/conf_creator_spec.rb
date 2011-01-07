@@ -5,7 +5,7 @@ require 'tmpdir'
 describe Dataloaderb::ConfCreator do
   before :each do
     @yamls = [
-      'spec/fixtures/processes/sample_proc.yml'
+      FIXTURE_PROCESSES[:full_process_one]
     ]
     # ConfCreator#new expects multiple arguments, not an array, thus we splat
     @creator = Dataloaderb::ConfCreator.new(*@yamls)
@@ -14,7 +14,7 @@ describe Dataloaderb::ConfCreator do
   context "#build_process_definitions" do
     it "should build a process definition for each yaml file" do
       @creator.processes.count.should == 1
-      @creator = Dataloaderb::ConfCreator.new('spec/fixtures/processes/sample_proc.yml', 'spec/fixtures/processes/sample_proc.yml')
+      @creator = Dataloaderb::ConfCreator.new(FIXTURE_PROCESSES[:full_process_one], FIXTURE_PROCESSES[:full_process_two])
       @creator.processes.count.should == 2
     end
   end
@@ -23,7 +23,7 @@ describe Dataloaderb::ConfCreator do
     it "should create XML with the correct values" do
       @creator.to_xml.include?('<entry key="sfdc.endpoint" value="https://www.salesforce.com"/>').should be_true
       @creator.to_xml.include?('<bean id="firstUpsert"').should be_true
-      @creator.to_xml.include?('<description>Upsert of some data somewhere</description>').should be_true
+      @creator.to_xml.include?('<description>First sample upsert</description>').should be_true
     end
   end
 
