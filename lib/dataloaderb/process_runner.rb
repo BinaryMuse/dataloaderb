@@ -4,10 +4,13 @@ module Dataloaderb
   class ProcessRunner
     # Create the process runner and specify the path to
     # the Apex Data Loader executable (batch) files.
-    def initialize(bin_path, opts = {})
+    def initialize(bin_path, opts = {}, &block)
       @bin_path  = bin_path
       @conf_path = nil
       @opts      = opts
+      if block_given?
+        instance_eval(&block)
+      end
     end
 
     # Run one or more processes. Specify the processes to run by passing
