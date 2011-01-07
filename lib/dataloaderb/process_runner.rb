@@ -8,9 +8,7 @@ module Dataloaderb
       @bin_path  = bin_path
       @conf_path = nil
       @opts      = opts
-      if block_given?
-        instance_eval(&block)
-      end
+      yield self if block_given?
     end
 
     # Run one or more processes. Specify the processes to run by passing

@@ -70,9 +70,9 @@ describe Dataloaderb::ProcessRunner do
 
   describe "with a passed block" do
     it "should execute the block in the scope of the instance" do
-      Dataloaderb::ProcessRunner.new('spec/fixtures/bin') do
-        self.stub!(:get_process_execute_command).and_return("./spec/fixtures/bin/test.sh")
-        result = execute_process 'spec/fixutres/processes/sample_proc.yml'
+      Dataloaderb::ProcessRunner.new('spec/fixtures/bin') do |runner|
+        runner.stub!(:get_process_execute_command).and_return("./spec/fixtures/bin/test.sh")
+        result = runner.execute_process 'spec/fixutres/processes/sample_proc.yml'
         result.strip.should == "result of process"
       end
     end
