@@ -11,7 +11,7 @@ module Dataloaderb
 
     # Create a new instance of a ConfCreator
     def initialize(yamls, opts = {})
-      @processes = []
+      @processes = {}
       @opts      = opts
       build_process_definitions(yamls)
     end
@@ -23,7 +23,8 @@ module Dataloaderb
         else
           proc_def = Dataloaderb::ProcessDefinition.new(yaml, @opts[:merge])
         end
-        @processes << proc_def
+        process_name = proc_def.id
+        @processes[process_name] = proc_def
       end
     end
 

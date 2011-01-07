@@ -17,6 +17,12 @@ describe Dataloaderb::ConfCreator do
       @creator = Dataloaderb::ConfCreator.new([FIXTURE_PROCESSES[:full_process_one], FIXTURE_PROCESSES[:full_process_two]])
       @creator.processes.count.should == 2
     end
+
+    it "should save processes in a hash based on the name of the process" do
+      @creator = Dataloaderb::ConfCreator.new([FIXTURE_PROCESSES[:full_process_one], FIXTURE_PROCESSES[:full_process_two]])
+      @creator.processes['firstUpsert'].class.should == Dataloaderb::ProcessDefinition
+      @creator.processes['secondUpsert'].class.should == Dataloaderb::ProcessDefinition
+    end
   end
 
   context "#to_xml" do

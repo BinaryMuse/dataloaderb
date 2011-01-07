@@ -1,6 +1,6 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-<% @processes.each do |proc| %>
+<% @processes.each do |name, proc| %>
   <bean id="<%= proc.id %>"
         class="com.salesforce.dataloader.process.ProcessRunner"
         singleton="false">
