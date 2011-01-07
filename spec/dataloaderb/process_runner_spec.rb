@@ -29,7 +29,7 @@ describe Dataloaderb::ProcessRunner do
   end
 
   describe "#create_configuration" do
-    it "should create a new directory under the temporary directory" do
+    it "should create a process-conf.xml file with the configuration in a temp directory" do
       @runner.instance_variable_set(:@opts, { :tmp_dir => './tmp/' })
       @runner.send(:create_configuration, 'fake xml data')
       tmp_dir = @runner.instance_variable_get(:@conf_path)
