@@ -7,6 +7,13 @@ describe Dataloaderb::ProcessDefinition do
     @conf = Dataloaderb::ProcessDefinition.new(FIXTURE_PROCESSES[:full_process_one])
   end
 
+  it "should have basic properties" do
+    @conf.should respond_to(:id)
+    @conf.should respond_to(:name)
+    @conf.should respond_to(:description)
+    @conf.should respond_to(:entries)
+  end
+
   describe "#set/#get" do
     it "should allow setting process conf variables via the XML entry key as a string" do
       @conf.set('sfdc.endpoint', 'https://test.salesforce.com')
@@ -36,6 +43,12 @@ describe Dataloaderb::ProcessDefinition do
       @conf.get('sfdc.timeoutSecs').should == '600'
       @conf.get('sfdc.debugMessages').should == 'true'
       @conf.get('process.initialLastRunDate').should == '2010-01-01T00:00:00.000-0800'
+    end
+
+    it "should expose properties via attributes" do
+      @conf.id.should == 'firstUpsert'
+      @conf.name.should == 'firstUpsert'
+      @conf.description.should == 'First sample upsert'
     end
   end
 

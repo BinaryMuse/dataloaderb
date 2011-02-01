@@ -2,6 +2,7 @@ module Dataloaderb
   class ProcessDefinition
 
     attr_reader :id
+    alias :name :id
     attr_reader :description
     attr_reader :entries
 
