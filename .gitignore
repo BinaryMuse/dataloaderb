@@ -3,3 +3,4 @@ pkg/*
 .bundle
 spec/tmp/*
 tmp/*
+.rvmrc
